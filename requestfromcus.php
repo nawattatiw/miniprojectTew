@@ -63,13 +63,17 @@ if (!$_SESSION["UserID"]){
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Create Order
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
+                        <a class="dropdown-item" href="tableforcus.php">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Check Status Order your own
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="#" readonly>
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" ></i>
+                            Edit (comming soon)
+                        </a>
+                        <a class="dropdown-item" href="#" readonly>
                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
+                            Setting (comming soon)
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -159,7 +163,15 @@ if (!$_SESSION["UserID"]){
                             </div>
                             <div class="form-group">
                                 <label for="orderaddress">ที่อยู่ของสินค้าที่จะให้ไปหิ้ว</label>
-                                <textarea class="form-control" name="orderaddress" rows="3" placeholder="แจ้งให้ระเอียดให้ครบถูกต้อง // ถ้ามีหลายท่านกรุณาระบุชื่อผู้รับคู่กับสินค้า  เช่น 1. nike nmd ของคุณ XXXX XXX"></textarea>
+                                <textarea class="form-control" name="orderaddress" rows="3"  placeholder="แจ้งให้ระเอียดให้ครบถูกต้อง // ถ้ามีหลายท่านกรุณาระบุชื่อผู้รับคู่กับสินค้า  เช่น 1. nike nmd ของคุณ XXXX XXX" >
+                                    <?php
+                                    //2. query ข้อมูลจากตาราง:
+                                    $sql = "SELECT * FROM usered WHERE Username=";
+                                    $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
+                                    while($data = mysqli_fetch_array($result)){
+                                        echo $data['addressuser'];
+                                    }
+                                    ?></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary" name="save" onClick="window.location.reload();">บันทึกรายการสินค้า</button>
                             <button type="reset" class="btn btn-danger">รีค่า</button>
