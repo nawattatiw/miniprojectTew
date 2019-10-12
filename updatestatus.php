@@ -139,7 +139,7 @@ if($_GET["orderid"]=='') {
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="login.php">Login</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -188,18 +188,6 @@ if($_GET["orderid"]=='') {
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -326,7 +314,7 @@ if($_GET["orderid"]=='') {
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="login.php">Logout</a>
                     </div>
                 </div>
             </div>
