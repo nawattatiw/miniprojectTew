@@ -123,6 +123,7 @@ if($rs['orderid'] !=""){
                     <h6 class="collapse-header">ALL REPORT</h6>
                     <a class="collapse-item" href="report.php">Report order</a>
                     <a class="collapse-item" href="ReportRFC.php">Report RFC</a>
+                    <a class="collapse-item" href="tablerefund.php">Report Refund</a>
                 </div>
             </div>
         </li>
@@ -159,7 +160,7 @@ if($rs['orderid'] !=""){
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow-right">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nawattakron Somboonma</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
                             <img class="img-profile rounded-circle" src="photo/profile.jpg">
                         </a>
                         <!-- Dropdown - User Information -->

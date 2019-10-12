@@ -191,6 +191,7 @@
                                     <th>วันที่จะให้ไปซื้อ</th>
                                     <th>สาเหตุ</th>
                                     <th>Trackingnumber</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -211,6 +212,8 @@
                                     echo "<td>" . $row["orderdatebuy"]. "</td>";
                                     echo "<td>" . $row["refundreason"]. "</td>";
                                     echo "<td>" . $row["trackingnumber"]. "</td>";
+                                    echo "<td><a href='updatestatus.php?orderid=$row[0]'>EDIT</a><br>
+                                                <a href='updaterefund.php?orderid=$row[0]'>Refund</a></td>";
                                     echo "</tr>";
                                 }
 

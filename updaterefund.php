@@ -4,7 +4,7 @@ require_once('connect.php');
 if($_GET["orderid"]=='') {
     echo "<script type='text/javascript'>";
     echo "alert(' OKAY PASS!!');";
-    echo "window.location = 'confirmorder.php'; ";
+    echo "window.location = 'tablerefund.php'; ";
     echo "</script>";
 
 }
@@ -259,11 +259,11 @@ extract($row);
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="orderdatebuy">วันที่จะไปซื้อให้</label>
-                                    <input type="date" class="form-control"  name="refundreason" value="<?php  echo $row["orderdatebuy"]?>" >
+                                    <input type="date" class="form-control"  name="orderdatebuy" value="<?php  echo $row["orderdatebuy"]?>" >
                                 </div>
                                 <div class="form-group">
                                     <label for="refundreason">สาเหตุ</label>
-                                    <textarea class="form-control" name="refundreason" rows="3" ></textarea>
+                                    <textarea class="form-control" name="refundreason" rows="3" ><?php  echo $row["refundreason"]?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="trackingnumber">Tracking number</label>
