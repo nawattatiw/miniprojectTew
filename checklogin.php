@@ -18,6 +18,9 @@ if(isset($_POST['Username'])){
         $_SESSION["UserID"] = $row["ID"];
         $_SESSION["User"] = $row["Firstname"]." ".$row["Lastname"];
         $_SESSION["Userlevel"] = $row["Userlevel"];
+        $_SESSION["Username"] = $row["Username"];
+        $_SESSION["phonenumber"] = $row["phonenumber"];
+        $_SESSION["addressuser"] = $row["addressuser"];
 
         if($_SESSION["Userlevel"]=="A"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
 

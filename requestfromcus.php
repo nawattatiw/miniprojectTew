@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+?>
 <?php
 require_once('connect.php');
 if (!$_SESSION["UserID"]){
@@ -141,20 +142,18 @@ if (!$_SESSION["UserID"]){
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputEmail4">สินค้า</label>
+                                    <label for="inputEmail4">ที่อยู่จะให้ไปซื้อสินค้า</label>
+                                    <textarea class="form-control" name ="orderaddress" rows="3"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">รายละเอียดสินค้า</label>
                                     <textarea class="form-control" name ="orderproductname" rows="3" placeholder="กรุณาแจงสินค้าตามที่ท่านต้องการถ้ามีคำถามทางเราก็จะโทรกลับไป"></textarea>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="orderpiece">จำนวนชิ้น ( 1 ออเดอร์ไม่เกิน 5ชิ้น)</label>
-                                    <select class="form-control" name="orderpiece">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
+                                    <label for="orderpiece">จำนวนชิ้น </label>
+                                    <input type="text" class="form-control" name="orderpiece">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -162,11 +161,10 @@ if (!$_SESSION["UserID"]){
                                 <input type="text" class="form-control" name="ordercontact" >
                             </div>
                             <div class="form-group">
-                                <label for="orderaddress">ที่อยู่ของสินค้าที่จะให้ไปหิ้ว</label>
-                                <textarea class="form-control" name="orderaddress" rows="3"  placeholder="แจ้งให้ระเอียดให้ครบถูกต้อง // ถ้ามีหลายท่านกรุณาระบุชื่อผู้รับคู่กับสินค้า  เช่น 1. nike nmd ของคุณ XXXX XXX" >
-                                    <?php
+                                <label for="orderaddress">ที่อยู่ลูกค้า</label>
+                                <textarea class="form-control" name="orderaddresscus" rows="3"  placeholder="แจ้งให้ระเอียดให้ครบถูกต้อง // ถ้ามีหลายท่านกรุณาระบุชื่อผู้รับคู่กับสินค้า  เช่น 1. nike nmd ของคุณ XXXX XXX" ><?php
                                     //2. query ข้อมูลจากตาราง:
-                                    $sql = "SELECT * FROM usered WHERE Username=";
+                                    $sql = "SELECT * FROM usered WHERE ID = '".$_SESSION['UserID']."'";
                                     $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
                                     while($data = mysqli_fetch_array($result)){
                                         echo $data['addressuser'];
@@ -213,16 +211,17 @@ if(isset($_POST['save'])){//เมื่อกดปุ่ม save
     //กำหนดตัวแปร เก็บค่าจากการ input จากฟอร์ม
     $ordercustomer = $_POST['ordercustomer'];
     $orderdate = $_POST['orderdate'];
+    $orderaddress = $_POST['orderaddress'];
     $orderproductname = $_POST['orderproductname'];
     $orderpiece = $_POST['orderpiece'];
     $ordercontact = $_POST['ordercontact'];
-    $orderaddress = $_POST['orderaddress'];
+    $orderaddresscus = $_POST['orderaddresscus'];
     //คำสั่ง sql
-    $sql1 = "INSERT INTO requestorder (ordercustomer,orderdate,orderproductname,orderpiece,ordercontact,orderaddress) 
-            VALUES('$ordercustomer','$orderdate','$orderproductname','$orderpiece','$ordercontact','$orderaddress')";
+    $sql1 = "INSERT INTO requestorder (ordercustomer,orderdate,orderaddress,orderproductname,orderpiece,ordercontact,orderaddresscus) 
+            VALUES('$ordercustomer','$orderdate','$orderaddress','$orderproductname','$orderpiece','$ordercontact','$orderaddresscus')";
 
     if(mysqli_query($conn,$sql1)){//รัน sql พร้อมแสดงข้อความ
-        echo "<script>alert('บันทึกข้อมูลเรียบร้อยแล้ว');window.location='index.php';</script>";
+        echo "<script>alert('บันทึกข้อมูลเรียบร้อยแล้ว');window.location='requestfromcus.php';</script>";
 
     }else{
         echo "ผิดพลาด : ".$sql1."<br>".mysqli_error($conn);
