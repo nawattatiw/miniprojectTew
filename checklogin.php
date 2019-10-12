@@ -27,6 +27,10 @@ if(empty($_POST["username"]) and empty($_POST["password"])){
         {
             header("location:index.php");
         }
+        else
+        {
+            header("location:requestfromcus.php");
+        }
     }
     mysqli_close($ta);
 }
