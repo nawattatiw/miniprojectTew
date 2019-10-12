@@ -115,6 +115,7 @@
                     <h6 class="collapse-header">ALL REPORT</h6>
                     <a class="collapse-item" href="report.php">Report order</a>
                     <a class="collapse-item" href="ReportRFC.php">Report RFC</a>
+                    <a class="collapse-item" href="tablerefund.php">Report Refund</a>
                 </div>
             </div>
         </li>

@@ -103,7 +103,6 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>TABLE for customer</span></a>
         </li>
-
         <!-- Nav Item - report -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsereport" aria-expanded="true" aria-controls="collapsePages">
@@ -115,10 +114,9 @@
                     <h6 class="collapse-header">ALL REPORT</h6>
                     <a class="collapse-item" href="report.php">Report order</a>
                     <a class="collapse-item" href="ReportRFC.php">Report RFC</a>
-                    <a class="collapse-item" href="forgot-password.html">Report Refund</a>
+                    <a class="collapse-item" href="tablerefund.php">Report Refund</a>
                 </div>
             </div>
-        </li>
         </li>
 
         <!-- Divider -->
