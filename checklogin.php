@@ -1,37 +1,48 @@
 <?php
 session_start();
-$ta = mysqli_connect("localhost","root", "", "miniprojectnawattakron");
-echo $_POST["username"];
-echo $_POST["password"];
-if(empty($_POST["username"]) and empty($_POST["password"])){
-    header("location:login.php");
+if(isset($_POST['Username'])){
+    //connection
+    include("connect.php");
+    //รับค่า user & password
+    $Username = $_POST['Username'];
+    $Password = md5($_POST['Password']);
+    //query
+    $sql="SELECT * FROM usered Where Username='".$Username."' and Password='".$Password."' ";
+
+    $result = mysqli_query($conn,$sql);
+
+    if(mysqli_num_rows($result)==1){
+
+        $row = mysqli_fetch_array($result);
+
+        $_SESSION["UserID"] = $row["ID"];
+        $_SESSION["User"] = $row["Firstname"]." ".$row["Lastname"];
+        $_SESSION["Userlevel"] = $row["Userlevel"];
+
+        if($_SESSION["Userlevel"]=="A"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+
+            Header("Location: index.php");
+
+        }
+
+        if ($_SESSION["Userlevel"]=="M"){  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
+
+            Header("Location: requestfromcus.php");
+
+        }
+
+    }else{
+        echo "<script>";
+        echo "alert(\" user หรือ  password ไม่ถูกต้อง\");";
+        echo "window.history.back()";
+        echo "</script>";
+
+    }
+
 }else{
-    $strSQL="";
-    $strSQL = "SELECT * FROM admin WHERE username = '$_POST[username]' and password = '$_POST[password]'";
-    $objQuery = mysqli_query($ta,$strSQL);
-    $objResult = mysqli_fetch_array($objQuery);
-    // echo $objResult["id"];
-    if(!$objResult)
-    {
-        header("location:login.php");
-    }
-    else
-    {
-        $_SESSION["username"] = $objResult["username"];
-        $_SESSION["status"] = $objResult["status"];
 
 
-        // session_write_close();
+    Header("Location: login.php"); //user & password incorrect back to login again
 
-        if($objResult["status"] == "admin")
-        {
-            header("location:index.php");
-        }
-        else
-        {
-            header("location:requestfromcus.php");
-        }
-    }
-    mysqli_close($ta);
 }
 ?>

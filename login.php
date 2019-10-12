@@ -31,8 +31,29 @@ mysqli_query($conn, 'set names utf8'); //ให้อ่านภาษาไท
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="homepagebg.html">
+        <img style="width: 50px;height: 50px;" src="photo/bearicon.png">Hungry Bear</a>
 
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="tableforcus.php">TRACKING<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="credit.php">CREDIT<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link" href="login.php">Login</a>
+            <a class="nav-link" href="register.php">Register</a>
+        </form>
+    </div>
+</nav>
 <div class="container">
 
     <!-- Outer Row -->
@@ -48,17 +69,21 @@ mysqli_query($conn, 'set names utf8'); //ให้อ่านภาษาไท
                         <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back NTK!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome </h1>
                                 </div>
                                 <form  action="checklogin.php" method="post">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user btn-block" name="username"  id="username" placeholder="Username">
+                                        <input type="text" class="form-control form-control-user btn-block" name="Username"  id="Username" placeholder="Username"  required name="Username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user btn-block" name="password" id="password" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user btn-block" name="Password" id="Password" placeholder="Password" required name="Password">
                                     </div>
-                                    <button class="form-control  btn-block">
+                                    <button class="form-control  btn-primary"  type="submit">
                                         Login
+                                    </button>
+                                    <br>
+                                    <button class="form-control btn-danger" type="reset">
+                                        Reset
                                     </button>
                                 </form>
                                 <hr>

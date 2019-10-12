@@ -1,7 +1,11 @@
+<?php session_start();?>
 <?php
-//เชื่อมต่อดาต้าเบด
 require_once('connect.php');
-?>
+if (!$_SESSION["UserID"]){
+
+    Header("Location: form_login.php");
+
+}else{?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,6 +170,7 @@ require_once('connect.php');
             <script src="js/demo/chart-pie-demo.js"></script>
             </body>
             </html>
+<?php }?>
 <?php
 //---เชื่อมต่อฐานข้อมูล---
 // ประกาศตัวแปร
