@@ -59,7 +59,6 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-
         <!-- Heading -->
         <div class="sidebar-heading">
             Main menu
@@ -115,6 +114,7 @@
                     <h6 class="collapse-header">ALL REPORT</h6>
                     <a class="collapse-item" href="report.php">Report order</a>
                     <a class="collapse-item" href="ReportRFC.php">Report RFC</a>
+                    <a class="collapse-item" href="tablerefund.php">Report Refund</a>
                 </div>
             </div>
         </li>
@@ -173,51 +173,44 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Confirm Order</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Report refund</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" >
+                            <table class="table table-bordered" id="dbRFC" width="100%" >
                                 <thead>
                                 <tr>
-                                    <th>ORDERID</th>
+                                    <th>เลขออเดอร์</th>
                                     <th>สถานะ</th>
                                     <th>ชื่อลูกค้า</th>
-                                    <th>ติดต่อ</th>
-                                    <th>ที่อยู่</th>
-                                    <th>ประเภทสินค้า</th>
+                                    <th>ประเภท</th>
                                     <th>ชื่อสินค้า</th>
-                                    <th>จำนวนชิ้น</th>
-                                    <th>รายละเอียด</th>
+                                    <th>จำนวน</th>
                                     <th>ค่าบริการ</th>
-                                    <th>ราคารวมทั้งหมด</th>
-                                    <th>วันที่คนหิ้วต้องไปซื้อ</th>
-                                    <th>Action</th>
+                                    <th>ราคารวม</th>
+                                    <th>วันที่</th>
+                                    <th>Trackingnumber</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 include('connect.php');
-                                $query = "SELECT * FROM orderfence WHERE orderstatus LIKE '%ยืนยันการซื้อสินค้า%'" or die("Error:" . mysqli_error());
+                                $query = "SELECT * FROM refundordered ORDER BY idrefund " or die("Error:" . mysqli_error());
                                 $result = mysqli_query($conn, $query);
                                 while($row = mysqli_fetch_array($result)) {
-                                        echo "<tr>";
-                                        echo "<td>" . $row["orderid"]. "</td>";
-                                        echo "<td>" . $row["orderstatus"]. "</td>";
-                                        echo "<td>" . $row["ordernamecus"]. "</td>";
-                                        echo "<td>" . $row["ordercontact"]. "</td>";
-                                        echo "<td>" . $row["orderaddress"]. "</td>";
-                                        echo "<td>" . $row["typepd"]. "</td>";
-                                        echo "<td>" . $row["ordernameproduct"]. "</td>";
-                                        echo "<td>" . $row["orderpieceproduct"]. "</td>";
-                                        echo "<td>" . $row["orderdetailproduct"]. "</td>";
-                                        echo "<td>" . $row["orderservicecharge"]. "</td>";
-                                        echo "<td>" . $row["ordertotalprice"]. "</td>";
-                                        echo "<td>" . $row["orderdatebuy"]. "</td>";
-                                        echo "<td><a href='updatestatus.php?orderid=$row[0]'>EDIT</a><br>
-                                                <a href='updaterefund.php?orderid=$row[0]'>Refund</a></td>";
-                                        echo "</tr>";
-                                    }
+                                    echo "<tr>";
+                                    echo "<td>" . $row["idrefund"]. "</td>";
+                                    echo "<td>" . $row["refundstatus"]. "</td>";
+                                    echo "<td>" . $row["refundnamecus"]. "</td>";
+                                    echo "<td>" . $row["refundtypepd"]. "</td>";
+                                    echo "<td>" . $row["refundnameproduct"]. "</td>";
+                                    echo "<td>" . $row["refundpieceproduct"]. "</td>";
+                                    echo "<td>" . $row["refundservicecharge"]. "</td>";
+                                    echo "<td>" . $row["refundtotalprice"]. "</td>";
+                                    echo "<td>" . $row["refunddatebuy"]. "</td>";
+                                    echo "<td>" . $row["refuntrackingnumber"]. "</td>";
+                                    echo "</tr>";
+                                }
 
                                 $conn->close();
                                 ?>
@@ -267,7 +260,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="login.php">Logout</a>
             </div>
         </div>
     </div>
@@ -290,9 +283,29 @@
 
 <!-- Page level custom scripts -->
 <script src="js/demo/datatables-demo.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="//cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
 
 
 </body>
-
+<script type="text/javascript" >
+    $(document).ready(function() {
+        $('#dbRFC').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copy','excel','print'
+            ]
+        } );
+    } );
+</script>
 </html>

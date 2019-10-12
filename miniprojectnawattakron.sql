@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2019 at 04:00 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.1.28
+-- Generation Time: Oct 12, 2019 at 07:27 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `miniprojectnawattakron`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `adminid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminid`, `username`, `password`, `status`) VALUES
+('admin001', 'admin', '054522684', 'admin');
 
 -- --------------------------------------------------------
 
@@ -51,7 +71,9 @@ CREATE TABLE `orderfence` (
 INSERT INTO `orderfence` (`orderid`, `orderstatus`, `ordernamecus`, `ordercontact`, `orderaddress`, `typepd`, `ordernameproduct`, `orderpieceproduct`, `orderdetailproduct`, `orderservicecharge`, `ordertotalprice`, `orderdatebuy`, `trackingnumber`) VALUES
 ('T002', 'ส่งสินค้าเสร็จเรียบร้อย', 'K. กิตติค่ะ', 'ns.wit', '505room15 in apertmant', 'สร้อยคอ', 'Rastaclat Classic', '3', 'rastaclast classic สีดำ สีvoid สีขาว', '150 / ชิ้น  50 ค่าส่ง', '3200', '2019-10-19', 'TH020010013'),
 ('T003', 'ส่งสินค้าเสร็จเรียบร้อย', 'ธราวัณ  ปันยาทอง', 'ธราวัณ  ปันยาทอง', 'หอหญิงใน  ม. เกษตร 50 ถนน งามวงศ์วาน แขวง ลาดยาว เขตจตุจักร กรุงเทพมหานคร 10900', 'กระเป๋า', 'Gucci belt', '2', 'Gucci belt คัดแบรนสองชิ้น ชิ้นล่ะ 13500', '150', '2300', '2019-10-18', 'G20202023'),
-('T004', 'กำลังโดนจับกูเนี่ย', 'ประวิตร วงษ์สุวรรณ', 'P.prawit rakprayut', 'กองบัญชาการกองทัพบก\r\nเดิม กองบังคับการ กรมทหารราบที่ 1 มหาดเล็กรักษาพระองค์', 'อื่นๆ', 'นาฟิกาข้อมือยืมเพื่อน', '3', '-Richard Mille รุ่น RM 029 ราคาประมาณ 3.6 ล้านบาท\r\n-นาฬิกายี่ห้อ Richard Mille รุ่น RM 30 ราคาประมาณ 4 ล้านบาท\r\n-นาฬิกายี่ห้อ Rolex รุ่น Cosmograph Daytona Ice Blue Dial Platinum ราคาประมาณ  2.4ล้านบาท\r\n-นาฬิกายี่ห้อ Patek Philippe รุ่น 5960/1A ราคาอยู่ที่ 1.5-1.66 ล้านบาท', '300,000', '13', '2019-10-31', '');
+('T004', 'Refund', 'ประวิตร วงษ์สุวรรณ', 'P.prawit rakprayut', 'กองบัญชาการกองทัพบก\r\nเดิม กองบังคับการ กรมทหารราบที่ 1 มหาดเล็กรักษาพระองค์', 'อื่นๆ', 'นาฟิกาข้อมือยืมเพื่อน', '3', '-Richard Mille รุ่น RM 029 ราคาประมาณ 3.6 ล้านบาท\r\n-นาฬิกายี่ห้อ Richard Mille รุ่น RM 30 ราคาประมาณ 4 ล้านบาท\r\n-นาฬิกายี่ห้อ Rolex รุ่น Cosmograph Daytona Ice Blue Dial Platinum ราคาประมาณ  2.4ล้านบาท\r\n-นาฬิกายี่ห้อ Patek Philippe รุ่น 5960/1A ราคาอยู่ที่ 1.5-1.66 ล้านบาท', '300,000', '13', '2019-10-31', ''),
+('T005', 'อยู่ในระหว่างทำการจัดส่งสินค้า', 'ธราวัณ', 'Molol', '505room15 in apertmant', 'อื่นๆ', 'กางเกงqwd', '2', 'qwd  ไซส์ 31   ราคา 3100', '150 ', '3250', '2019-10-24', ''),
+('T006', '', 'ธราวัณ', 'Molol', '505room15 in apertmant', 'อื่นๆ', 'กางเกง qwd', '1', 'qwd กางเกง 3100', '150', '3250', '2019-10-31', '');
 
 -- --------------------------------------------------------
 
@@ -75,7 +97,8 @@ CREATE TABLE `requestorder` (
 INSERT INTO `requestorder` (`ordercustomer`, `orderdate`, `orderproductname`, `orderpiece`, `ordercontact`, `orderaddress`) VALUES
 ('OD001', '2019-10-25', 'Nike Air Force 1 Type เฉลิมฉลองประวัติศาสตร์แห่งกีฬาในฐานะส่วนหนึ่งของตระกูล N354 ที่ยกย่องไมล์ที่เร็วที่สุดของ Steve Prefontaine คู่นี้ใช้วัสดุโปร่งแสงเพื่ออวดระบบการสวมใส่ และเทคโนโลยีที่ปรับได้ ซึ่งให้สไตล์ที่ไม่เหมือนใคร ความพอดีแบบเฉพาะตัว และสไตล์การสวมใส่ที่อเนกประสงค์', '2', 'ggwp', '505room15 in apertmant'),
 ('OD002', '2019-10-23', 'ใส่ความ Freak ไปกับรองเท้ารุ่นซิกเนเจอร์รุ่นแรกของ Giannis Antetokoumpo และเป็นคู่แรกของ Nike ที่ให้สัมผัสแห่งเกมบาสเก็ตบอลในระดับนานาชาติ Zoom Freak 1 มีระบบลดแรงกระแทกพร้อมตอบสนองได้ดีเป็นพิเศษ ปลายเท้าล็อคกระชับ และการยึดเกาะหลายทิศทางแบบที่ต้องการเพื่อเติมเต็มเกมกีฬาสุด Freak ของเขา', '2', 'ggwp', '2 หมู่ที่ 1 บ้าน ถนน ยันตรกิจโกศล ตำบล ร้องกวาง อำเภอ ร้องกวาง แพร่ 54140'),
-('OD003', '2019-10-16', 'Nike Free Metcon 2 UT เพิ่มการรองรับอีกชั้นเพื่อการออกกำลังกายหลากหลายรูปแบบ มาพร้อมสายรัดทนทานช่วยล็อคเท้าของคุณไว้ ขณะที่โฟมยืดหยุ่นทำให้คุณเคลื่อนไหวได้เป็นธรรมชาติอย่างต่อเนื่องตั้งแต่ท่าฝึกน้ำหนักไปจนถึงท่าฝึกความคล่องแคล่ว', '2', 'Kirawit', '2 ถนน วังหลัง แขวง ศิริราช เขตบางกอกน้อย กรุงเทพมหานคร 10700');
+('OD003', '2019-10-16', 'Nike Free Metcon 2 UT เพิ่มการรองรับอีกชั้นเพื่อการออกกำลังกายหลากหลายรูปแบบ มาพร้อมสายรัดทนทานช่วยล็อคเท้าของคุณไว้ ขณะที่โฟมยืดหยุ่นทำให้คุณเคลื่อนไหวได้เป็นธรรมชาติอย่างต่อเนื่องตั้งแต่ท่าฝึกน้ำหนักไปจนถึงท่าฝึกความคล่องแคล่ว', '2', 'Kirawit', '2 ถนน วังหลัง แขวง ศิริราช เขตบางกอกน้อย กรุงเทพมหานคร 10700'),
+('OD004', '2019-10-30', 'กางเกงdwq', '3', 'Molol', 'สยาม ซอย3 ร้าน xxxx');
 
 -- --------------------------------------------------------
 
@@ -106,6 +129,12 @@ INSERT INTO `typeproduct` (`typepd`, `namepd`, `dategetpd`, `historypd`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`adminid`);
 
 --
 -- Indexes for table `orderfence`

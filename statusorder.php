@@ -192,7 +192,7 @@
                                 <tbody>
                                 <?php
                                 include('connect.php');
-                                $query = "SELECT * FROM orderfence ORDER BY orderid asc" or die("Error:" . mysqli_error());
+                                $query = "SELECT * FROM orderfence WHERE orderstatus LIKE '%อยู่ในระหว่างทำการจัดและซื้อส่งสินค้า%'" or die("Error:" . mysqli_error());
                                 $result = mysqli_query($conn, $query);
                                 while($row = mysqli_fetch_array($result)) {
                                     echo "<tr>";

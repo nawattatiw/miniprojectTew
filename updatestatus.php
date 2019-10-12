@@ -221,9 +221,7 @@ if($_GET["orderid"]=='') {
                                         <label for="ordercustomer">สถานะ</label>
                                         <select class="form-control" name="orderstatus">
                                             <option><?php  echo $row["orderstatus"]?></option>
-                                            <option>อยู่ในระหว่างการซื้อสินค้า</option>
-                                            <option>อยู่ในระหว่างทำการจัดส่งสินค้า</option>
-                                            <option>ทำการจัดส่งสินค้า</option>
+                                            <option>อยู่ในระหว่างทำการจัดและซื้อส่งสินค้า</option>
                                             <option>ส่งสินค้าเสร็จเรียบร้อย</option>
                                         </select>
                                     </div>

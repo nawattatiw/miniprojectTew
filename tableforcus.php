@@ -102,45 +102,6 @@ require_once('connect.php');
 <div class="col-2">
     <!--        จัดกึ่งกลาง              -->
 </div>
-</div>
-<!-- Icons Grid -->
-<!--<section class="features-icons bg-light text-center">-->
-<!--    <br>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <hr>-->
-<!--            <div class="card" style="width: 15rem;">-->
-<!--                <img src="photo/talk.png" class="card-img-top" style="height: 250px;">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title text-gray-900">คุยง่าย</h5>-->
-<!--                    <p class="card-text ">ติดต่อสะดวก ได้คุยตลอดเวลา</p>-->
-<!--                    <a href="https://www.instagram.com/p/BkYL4ZQDjQsT0K4CayKsfKcA0q9LyD6nNZVsTE0/"-->
-<!--                       class="btn btn-primary" target="_blank">ติดต่อ</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <hr>-->
-<!--            <div class="card" style="width: 15rem;">-->
-<!--                <img src="photo/trackingproduct.jpg" class="card-img-top" style="height: 250px;">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title text-gray-900">ติดตามสินค้าได้ที่</h5>-->
-<!--                    <p class="card-text">Tracking Number</p>-->
-<!--                    <a href="https://www.instagram.com/p/Blo9H9CB-sDviv6X8wxWnlKDMIIrYgHXY_W-ls0/"-->
-<!--                       class="btn btn-primary" target="_blank">เลขพัสดุ</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <hr>-->
-<!--            <div class="card" style="width: 15rem;">-->
-<!--                <img src="photo/lettalkfu.png" class="card-img-top" style="height: 250px;">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title text-gray-900 ">มีหลักฐาน</h5>-->
-<!--                    <p class="card-text">มีหลักฐานการโอนเงินสินค้า</p>-->
-<!--                    <a href="https://www.instagram.com/p/By9VRsIgZzpZkQAwySgfjwznmA5o90LOcsEjRE0/"-->
-<!--                       class="btn btn-primary" target="_blank">คลิกดูหลักฐาน</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>

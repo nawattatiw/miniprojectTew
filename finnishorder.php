@@ -193,7 +193,7 @@
                                 <tbody>
                                 <?php
                                 include('connect.php');
-                                $query = "SELECT * FROM orderfence ORDER BY orderid" or die("Error:" . mysqli_error());
+                                $query = "SELECT * FROM orderfence WHERE orderstatus LIKE '%ส่งสินค้าเสร็จเรียบร้อย%'" or die("Error:" . mysqli_error());
                                 $result = mysqli_query($conn, $query);
                                 while($row = mysqli_fetch_array($result)) {
                                     echo "<tr>";
