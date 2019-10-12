@@ -188,27 +188,29 @@
                                     <th>จำนวน</th>
                                     <th>ค่าบริการ</th>
                                     <th>ราคารวม</th>
-                                    <th>วันที่</th>
+                                    <th>วันที่จะให้ไปซื้อ</th>
+                                    <th>สาเหตุ</th>
                                     <th>Trackingnumber</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 include('connect.php');
-                                $query = "SELECT * FROM refundordered ORDER BY idrefund " or die("Error:" . mysqli_error());
+                                $query = "SELECT * FROM orderfence WHERE orderstatus LIKE '%refund%'" or die("Error:" . mysqli_error());
                                 $result = mysqli_query($conn, $query);
                                 while($row = mysqli_fetch_array($result)) {
                                     echo "<tr>";
-                                    echo "<td>" . $row["idrefund"]. "</td>";
-                                    echo "<td>" . $row["refundstatus"]. "</td>";
-                                    echo "<td>" . $row["refundnamecus"]. "</td>";
-                                    echo "<td>" . $row["refundtypepd"]. "</td>";
-                                    echo "<td>" . $row["refundnameproduct"]. "</td>";
-                                    echo "<td>" . $row["refundpieceproduct"]. "</td>";
-                                    echo "<td>" . $row["refundservicecharge"]. "</td>";
-                                    echo "<td>" . $row["refundtotalprice"]. "</td>";
-                                    echo "<td>" . $row["refunddatebuy"]. "</td>";
-                                    echo "<td>" . $row["refuntrackingnumber"]. "</td>";
+                                    echo "<td>" . $row["orderid"]. "</td>";
+                                    echo "<td>" . $row["orderstatus"]. "</td>";
+                                    echo "<td>" . $row["ordernamecus"]. "</td>";
+                                    echo "<td>" . $row["typepd"]. "</td>";
+                                    echo "<td>" . $row["ordernameproduct"]. "</td>";
+                                    echo "<td>" . $row["orderpieceproduct"]. "</td>";
+                                    echo "<td>" . $row["orderservicecharge"]. "</td>";
+                                    echo "<td>" . $row["ordertotalprice"]. "</td>";
+                                    echo "<td>" . $row["orderdatebuy"]. "</td>";
+                                    echo "<td>" . $row["refundreason"]. "</td>";
+                                    echo "<td>" . $row["trackingnumber"]. "</td>";
                                     echo "</tr>";
                                 }
 

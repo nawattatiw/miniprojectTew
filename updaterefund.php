@@ -8,7 +8,6 @@ if($_GET["orderid"]=='') {
     echo "</script>";
 
 }
-
 //รับค่าไอดีที่จะแก้ไข
 $orderid = mysqli_real_escape_string($conn,$_GET['orderid']);
 
@@ -210,7 +209,7 @@ extract($row);
                         <!--                        blank ไว้-->
                     </div>
                     <div class="col">
-                        <h1>อัพเดทรายการสินค้า</h1><hr>
+                        <h1>REFUND ORDER</h1><hr>
                         <form action="updaterefund.php" method="POST" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -220,8 +219,11 @@ extract($row);
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="ordercustomer">สถานะ</label>
-                                    <input type="text" class="form-control" name="orderstatus" value="Refund" >
-
+                                    <select class="form-control" name="orderstatus">
+                                        <option value="<?php  echo $row["orderstatus"]?>"><?php  echo $row["orderstatus"]?></option>
+                                        <!--   confrim order  -->
+                                        <option value="Refund">Refund</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -231,7 +233,7 @@ extract($row);
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="inputState">ประเภทสินค้า</label>
-                                    <input type="text" class="form-control" name="refundtypepd" value="<?php  echo $row["typepd"]?>" disabled>
+                                    <input type="text" class="form-control" name="typepd" value="<?php  echo $row["typepd"]?>"disabled>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -257,13 +259,17 @@ extract($row);
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="orderdatebuy">วันที่จะไปซื้อให้</label>
-                                    <input type="date" class="form-control"  name="orderdatebuy" value="<?php  echo $row["orderdatebuy"]?>" >
+                                    <input type="date" class="form-control"  name="refundreason" value="<?php  echo $row["orderdatebuy"]?>" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="refundreason">สาเหตุ</label>
+                                    <textarea class="form-control" name="refundreason" rows="3" ></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="trackingnumber">Tracking number</label>
                                     <input type="text" class="form-control"  name="trackingnumber"value="<?php  echo $row["trackingnumber"]?>" >
                                 </div>
-                                <button type="submit" class="btn btn-primary" name="save" onClick="window.location.reload();">ตกลง</button>
+                                <button type="submit" class="btn btn-primary" name="update" onClick="window.location.reload();">อัพเดท</button>
                                 <button type="reset" class="btn btn-danger">รีค่า</button>
                         </form>
                     </div>
@@ -336,31 +342,104 @@ extract($row);
 </body>
 </html>
 <?php
+////---เชื่อมต่อฐานข้อมูล---
+//// ประกาศตัวแปร
+//$host = "localhost"; // ชื่อ host
+//$username = "root"; // ชื่อ user ที่ใช้ในการ login
+//$password = ""; // ชื่อ password ที่ใช้ในการ login
+//$dbname = "miniprojectnawattakron"; // ชื่อ database
+//
+//$conn = mysqli_connect($host,$username,$password,$dbname) or die("ไม่สามารถเชื่อมต่อฐานข้อมูลได้");//คำสั่งเชื่อมต่อฐานข้อมูล
+//mysqli_query($conn, 'set names utf8'); // กำหนด charset ให้ฐานข้อมูลเพื่ออ่านภาษาไทยได้
+//if(isset($_POST['save'])){//เมื่อกดปุ่ม save
+//    //กำหนดตัวแปร เก็บค่าจากการ input จากฟอร์ม
+//    $orderid = $_POST['orderid'];
+//    $ordercustomer = $_POST['ordercustomer'];
+//    $ordernamecus = $_POST['ordernamecus'];
+//    $ordercontact = $_POST['ordercontact'];
+//    $orderaddress = $_POST['orderaddress'];
+//    $typepd = $_POST['typepd'];
+//    $ordernameproduct = $_POST['ordernameproduct'];
+//    $orderpieceproduct = $_POST['orderpieceproduct'];
+//    $orderdetailproduct	 = $_POST['orderdetailproduct'];
+//    $orderservicecharge	 = $_POST['orderservicecharge'];
+//    $ordertotalprice	= $_POST['ordertotalprice'];
+//    $orderdatebuy		 = $_POST['orderdatebuy'];
+//    //คำสั่ง sql
+//    $sql1 = "INSERT INTO orderfence(orderid,ordercustomer,ordernamecus,ordercontact,orderaddress,typepd,ordernameproduct,orderpieceproduct,orderdetailproduct,orderservicecharge,ordertotalprice,orderdatebuy)
+//            VALUES('$orderid','$ordercustomer','$ordernamecus','$ordercontact','$orderaddress','$typepd','$ordernameproduct','$orderpieceproduct','$orderdetailproduct','$orderservicecharge','$ordertotalprice','$orderdatebuy')";
+//
+//    if(mysqli_query($conn,$sql1)){//รัน sql พร้อมแสดงข้อความ
+//        echo "<script>$(document).ready(function(){ $('#myModal').modal('show'); });</script>
+//
+//        <div class='modal fade' id='myModal' role='dialog'>
+//            <div class='modal-dialog modal-lg'>
+//              <div class='modal-content'>
+//                <div class='modal-body'>
+//                  <p>บันทึกเรียบร้อย</p>
+//                </div>
+//                    <div class='modal-footer'>
+//                            <button type='button' class='btn btn-primary' data-dismiss='modal'>ตกลง</button>
+//                         </a>
+//                    </div>
+//                </div>
+//            </div>
+//        </div>";
+//        ;
+//    }else{
+//        echo "ผิดพลาด : ".$sql1."<br>".mysqli_error($conn);
+//    }
+//}
+//?>
+<?php
 //1. เชื่อมต่อ database:
 include('connect.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
 
 //ตรวจสอบถ้าว่างให้เด้งไปหน้าหลักและไม่แก้ไขข้อมูล
-if(isset($_POST['save'])) {
+if(isset($_POST['update'])) {
 //สร้างตัวแปรสำหรับรับค่าที่นำมาแก้ไขจากฟอร์ม
-    $idrefund = $_POST['orderid'];
-    $refundstatus = $_POST['orderstatus'];
-    $refundnamecus = $_POST['ordernamecus'];
-    $refundtypepd = $_POST['refundtypepd'];
-    $refundnameproduct = $_POST['ordernameproduct'];
-    $refundpieceproduct = $_POST['orderpieceproduct'];
-    $refundservicecharge = $_POST['orderservicecharge'];
-    $refundtotalprice = $_POST['ordertotalprice'];
-    $refunddatebuy = $_POST['orderdatebuy'];
-    $refuntrackingnumber = $_POST['trackingnumber'];
+    $orderid = $_POST['orderid'];
+    $orderstatus = $_POST['orderstatus'];
+    $ordernamecus = $_POST['ordernamecus'];
+    $typepd = $_POST['typepd'];
+    $ordernameproduct = $_POST['ordernameproduct'];
+    $orderpieceproduct = $_POST['orderpieceproduct'];
+    $orderservicecharge = $_POST['orderservicecharge'];
+    $ordertotalprice = $_POST['ordertotalprice'];
+    $orderdatebuy = $_POST['orderdatebuy'];
+    $refundreason = $_POST['refundreason'];
+    $trackingnumber = $_POST['trackingnumber'];
 
 //ทำการปรับปรุงข้อมูลที่จะแก้ไขลงใน database
 
-    $sql = "INSERT INTO refundordered (idrefund,refundstatus,refundnamecus,refundtypepd,refundnameproduct,refundpieceproduct,refundservicecharge,refundtotalprice,refunddatebuy,refuntrackingnumber) 
-            VALUES('$idrefund','$refundstatus','$refundnamecus','$refundtypepd','$refundnameproduct','$refundpieceproduct','$refundservicecharge','$refundtotalprice','$refunddatebuy','$refuntrackingnumber')";
+    $sql = "UPDATE orderfence SET  
+			orderid='$orderid' ,
+			orderstatus='$orderstatus' , 
+			ordernamecus='$ordernamecus' ,
+			ordernameproduct='$ordernameproduct' ,
+			orderpieceproduct='$orderpieceproduct' ,
+			orderservicecharge='$orderservicecharge' ,
+			ordertotalprice='$ordertotalprice' ,
+			orderdatebuy='$orderdatebuy' ,
+			refundreason='$refundreason',
+			trackingnumber='$trackingnumber'  
+			WHERE orderid='$orderid' ";
 
     $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
 
     mysqli_close($conn); //ปิดการเชื่อมต่อ database
+    if($result){
+        echo "<script type='text/javascript'>";
+        echo "alert('Update Succesfuly');";
+        echo "window.location = 'confirmorder.php'; ";
+        echo "</script>";
+    }
+    else{
+        echo "<script type='text/javascript'>";
+        echo "alert('Error but saving');";
+        echo "window.location = 'statusorder.php'; ";
+        echo "</script>";
+    }
 }
 ?>
 +

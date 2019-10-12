@@ -196,6 +196,7 @@ if($rs['orderid'] !=""){
                                 <div class="form-group col-md-6">
                                     <label for="orderstatus">สถานะ</label>
                                     <input type="text" class="form-control" name="orderstatus" value="ยืนยันการซื้อสินค้า" disabled>
+                                    <input type="hidden" class="form-control" id="orderstatus"  name="orderstatus" value= "ยืนยันการซื้อสินค้า">
                                 </div>
                             </div>
                             <div class="form-group">
