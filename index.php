@@ -100,6 +100,11 @@ extract($row);
                 <i class="fas fa-id-card"></i>
                 <span>Tables Request Order</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Tableuser.php">
+                <i class="fas fa-id-card"></i>
+                <span>Tables User</span></a>
+        </li
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="tableforcus.php">

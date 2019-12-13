@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BO Admin  -  Confirm Order</title>
+    <title>SB Admin - FinnishOrder</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -174,52 +174,38 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Confirm Order</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Finnish Order</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" >
+                            <table class="table table-bordered" id="dataTablefinnish" width="100%" >
                                 <thead>
                                 <tr>
-                                    <th>ORDERID</th>
-                                    <th>สถานะ</th>
-                                    <th>ชื่อลูกค้า</th>
-                                    <th>ติดต่อ</th>
-                                    <th>ที่อยู่</th>
-                                    <th>ประเภทสินค้า</th>
-                                    <th>ชื่อสินค้า</th>
-                                    <th>จำนวนชิ้น</th>
-                                    <th>รายละเอียด</th>
-                                    <th>ค่าบริการ</th>
-                                    <th>ราคารวมทั้งหมด</th>
-                                    <th>วันที่คนหิ้วต้องไปซื้อ</th>
-                                    <th>Action</th>
+                                    <th>Username</th>
+                                    <th>ชื่อ</th>
+                                    <th>นามสกุล</th>
+                                    <th>E-mail</th>
+                                    <th>เบอร์โทรศัพท์</th>
+                                    <th>ที่อยู่ลูกค้า</th>
+                                    <th>ระดับ</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 include('connect.php');
-                                $query = "SELECT * FROM orderfence WHERE orderstatus LIKE '%ยืนยันการซื้อสินค้า%'" or die("Error:" . mysqli_error());
+                                $query = "SELECT * FROM usered " or die("Error:" . mysqli_error());
                                 $result = mysqli_query($conn, $query);
                                 while($row = mysqli_fetch_array($result)) {
-                                        echo "<tr>";
-                                        echo "<td>" . $row["orderid"]. "</td>";
-                                        echo "<td>" . $row["orderstatus"]. "</td>";
-                                        echo "<td>" . $row["ordernamecus"]. "</td>";
-                                        echo "<td>" . $row["ordercontact"]. "</td>";
-                                        echo "<td>" . $row["orderaddress"]. "</td>";
-                                        echo "<td>" . $row["typepd"]. "</td>";
-                                        echo "<td>" . $row["ordernameproduct"]. "</td>";
-                                        echo "<td>" . $row["orderpieceproduct"]. "</td>";
-                                        echo "<td>" . $row["orderdetailproduct"]. "</td>";
-                                        echo "<td>" . $row["orderservicecharge"]. "</td>";
-                                        echo "<td>" . $row["ordertotalprice"]. "</td>";
-                                        echo "<td>" . $row["orderdatebuy"]. "</td>";
-                                        echo "<td><a href='updatestatus.php?orderid=$row[0]'>EDIT</a><br>
-                                                <a href='updaterefund.php?orderid=$row[0]'>Refund</a><br>
-                                                <a href='deleteorder.php?delete_id=$row[0]'>Delete</a></td>";
-                                        echo "</tr>";
-                                    }
+                                    echo "<tr>";
+                                    echo "<td>" . $row["Username"]. "</td>";
+                                    echo "<td>" . $row["Firstname"]. "</td>";
+                                    echo "<td>" . $row["Lastname"]. "</td>";
+                                    echo "<td>" . $row["email"]. "</td>";
+                                    echo "<td>" . $row["phonenumber"]. "</td>";
+                                    echo "<td>" . $row["addressuser"]. "</td>";
+                                    echo "<td>" . $row["Userlevel"]. "</td>";
+                                    echo "</tr>";
+                                }
 
                                 $conn->close();
                                 ?>
@@ -296,5 +282,13 @@
 
 
 </body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#dataTablefinnish').DataTable( {
+            fixedHeader: true,
+            processing: true
+        } );
+    } );
+</script>
 
 </html>
